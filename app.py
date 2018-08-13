@@ -68,8 +68,6 @@ def processRequest(req):
     if yql_query is None:
         print("yqlquery is empty")
         return {}
-what's the weather in paris tomorrow
-give me the weather for Paris
 
     yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
     print(yql_url)
