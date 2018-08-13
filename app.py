@@ -27,6 +27,36 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+def formatDate(date):
+    year,month,day = date.split("-")
+    if month == "01":
+        month = " Jan "
+    elif month == "02":
+        month = " Feb "
+    elif month == "03":
+        month = " Mar "
+    elif month == "04":
+        month = " Apr "
+    elif month == "05":
+        month = " May "
+    elif month == "06":
+        month = " Jun "
+    elif month == "07":
+        month = " Jul "
+    elif month == "08":
+        month = " Aug "
+    elif month == "09":
+        month = " Sep "
+    elif month == "10":
+        month = " Oct "
+    elif month == "11":
+        month = " Nov "
+    elif month == "12":
+        month = " Dec "
+    else:
+        month = " Invalid month "
+    date = day + month + year
+    return date
 
 def processRequest(req):
     if req.get("result").get("action") != "yahooWeatherForecast":
