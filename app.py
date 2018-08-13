@@ -121,11 +121,11 @@ def makeWebhookResult(data, req):
                  ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + \
                  dateDialogflow
     else:
-        datedialogflow = formatDate(datedialogflow)
-        while (estimation < 10) and (datedialogflow != forecast.get(str(estimation)).get('date')):
+        dateDialogflow = formatDate(dateDialogflow)
+        while (estimation < 10) and (dateDialogflow != forecast.get(str(estimation)).get('date')):
             estimation =+1
             
-        if datedialogflow == forecast.get(str(estimation)).get('date'):            
+        if dateDialogflow == forecast.get(str(estimation)).get('date'):            
             speech = "On the " + forecast.get(str(estimation)).get('date') + " in " + location.get('city') + ": " + \
                      forecast.get(str(estimation)).get('date').get('text') + ", the temperature are " + \
                      forecast.get(str(estimation)).get('date').get('high') + "for the maximum and" + \
