@@ -27,17 +27,14 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+
 def processRequest(req):
-    print ("started processing")
     if req.get("result").get("action") != "yahooWeatherForecast":
         return {}
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
     yql_query = makeYqlQuery(req)
-    print ("yql query created")
     if yql_query is None:
-        print("yqlquery is empty")
         return {}
-
     yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
     print(yql_url)
 
@@ -57,44 +54,10 @@ def makeYqlQuery(req):
     if city is None:
         return None
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "') and u='c'"
+    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
-def formatDate(date):
-    year,month,day = date.split("-")
-    if month == "01":
-        month = " Jan "
-    elif month == "02":
-        month = " Feb "
-    elif month == "03":
-        month = " Mar "
-    elif month == "04":
-        month = " Apr "
-    elif month == "05":
-        month = " May "
-    elif month == "06":
-        month = " Jun "
-    elif month == "07":
-        month = " Jul "
-    elif month == "08":
-        month = " Aug "
-    elif month == "09":
-        month = " Sep "
-    elif month == "10":
-        month = " Oct "
-    elif month == "11":
-        month = " Nov "
-    elif month == "12":
-        month = " Dec "
-    else:
-        month = " Invalid month "
-    date = day + month + year
-    return date
 
 def makeWebhookResult(data):
-    estimation = 0
-    #result = req.get("result")
-    #parameters = result.get("parameters")
-    #datedialogflow = parameters.get("date")
     query = data.get('query')
     if query is None:
         return {}
@@ -108,7 +71,6 @@ def makeWebhookResult(data):
         return {}
 
     item = channel.get('item')
-    forecast = item.get('forecast')
     location = channel.get('location')
     units = channel.get('units')
     if (location is None) or (item is None) or (units is None):
@@ -117,20 +79,11 @@ def makeWebhookResult(data):
     condition = item.get('condition')
     if condition is None:
         return {}
-        
+
     # print(json.dumps(item, indent=4))
-    #if datedialogflow is None:
-        speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-                 ", the temperature is " + condition.get('temp') + " degrees"
-    #else:
-    #    datedialogflow = formatDate(datedialogflow)
-    #    while (estimation < 10) and (datedialogflow != forecast.get(str(estimation)).get('date')):
-    #        estimation =+1       
-    #    if datedialogflow == forecast.get(str(estimation)).get('date'):            
-    #        speech = "On the " + forecast.get(str(estimation)).get('date') + " in " + location.get('city') + ": " + \
-    #                 forecast.get(str(estimation)).get('date').get('text') + ", the temperature are " + \
-    #                 forecast.get(str(estimation)).get('date').get('high') + "for the maximum and" + \
-    #                 forecast.get(str(estimation)).get('date').get('low') + "for the minimum"
+
+    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
     print("Response:")
     print(speech)
@@ -200,11 +153,12 @@ def makeWebhookResult(data):
         "data": {"slack": slack_message, "facebook": facebook_message},
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
-    }    
+    }
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
-    print ("Starting app on port %d" % port)
+    print "Starting app on port %d" % port
 
-    app.run(debug=False, port=port, host='0.0.0.0')
+app.run(debug=False, port=port, host='0.0.0.0')
