@@ -129,7 +129,7 @@ def makeWebhookResult(data, req):
                  ", the temperature is " + condition.get('temp') + " degrees"
     else:
         datedialogflow = formatDate(datedialogflow)
-        while estimation < 10 && datedialogflow != forecast.get(str(estimation)).get('date'):
+        while (estimation < 10) and (datedialogflow != forecast.get(str(estimation)).get('date')):
             estimation =+1
             
         if datedialogflow == forecast.get(str(estimation)).get('date'):            
