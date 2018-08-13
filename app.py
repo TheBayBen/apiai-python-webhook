@@ -109,11 +109,15 @@ def makeWebhookResult(data, req):
     condition = item.get('condition')
     if condition is None:
         return {}
-
+    
+    estimation = 0
+    result = req.get("result")
+    parameters = result.get("parameters")
+    dateDialogflow = parameters.get("date")
     # print(json.dumps(item, indent=4))
-
-    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    if dateDialogflow is None:
+        speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+                 ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
     print("Response:")
     print(speech)
