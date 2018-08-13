@@ -120,19 +120,18 @@ def makeWebhookResult(data, req):
         return {}
         
     # print(json.dumps(item, indent=4))
-    if datedialogflow is None:
+    #if datedialogflow is None:
         speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
                  ", the temperature is " + condition.get('temp') + " degrees"
-    else:
-        datedialogflow = formatDate(datedialogflow)
-        while (estimation < 10) and (datedialogflow != forecast.get(str(estimation)).get('date')):
-            estimation =+1
-            
-        if datedialogflow == forecast.get(str(estimation)).get('date'):            
-            speech = "On the " + forecast.get(str(estimation)).get('date') + " in " + location.get('city') + ": " + \
-                     forecast.get(str(estimation)).get('date').get('text') + ", the temperature are " + \
-                     forecast.get(str(estimation)).get('date').get('high') + "for the maximum and" + \
-                     forecast.get(str(estimation)).get('date').get('low') + "for the minimum"
+    #else:
+    #    datedialogflow = formatDate(datedialogflow)
+    #    while (estimation < 10) and (datedialogflow != forecast.get(str(estimation)).get('date')):
+    #        estimation =+1       
+    #    if datedialogflow == forecast.get(str(estimation)).get('date'):            
+    #        speech = "On the " + forecast.get(str(estimation)).get('date') + " in " + location.get('city') + ": " + \
+    #                 forecast.get(str(estimation)).get('date').get('text') + ", the temperature are " + \
+    #                 forecast.get(str(estimation)).get('date').get('high') + "for the maximum and" + \
+    #                 forecast.get(str(estimation)).get('date').get('low') + "for the minimum"
 
     print("Response:")
     print(speech)
