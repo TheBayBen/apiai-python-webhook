@@ -46,7 +46,7 @@ def processRequest(req):
     print(result)
 
     data = json.loads(result)
-    res = makeWebhookResult(data, req)
+    res = makeWebhookResult(data)
     return res
 
 
