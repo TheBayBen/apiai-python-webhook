@@ -3,7 +3,7 @@
 #while (estimation < 10) and (dateDialogflow != forecast.get(str(estimation)).get('date'))
 #estimation =+1         
 #if dateDialogflow == forecast.get(str(estimation)).get('date'):         
-
+#" will be " + forecast[int(estimation)]['text'] + \
 import urllib
 import json
 import os
@@ -130,7 +130,6 @@ def makeWebhookResult(data, req):
             estimation =+1         
         if dateDialogflow == forecast[1]['date']:
             speech = "Tomorrow the weather in " + location['city'] + \
-                     #" will be " + forecast[int(estimation)]['text'] + \
                      forecast[int(estimation)]['high'] + \ 
                      " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
