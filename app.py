@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#dateDialogflow = formatDate(dateDialogflow)
+#while (estimation < 10) and (dateDialogflow != forecast.get(str(estimation)).get('date'))
+#estimation =+1         
+#if dateDialogflow == forecast.get(str(estimation)).get('date'):         
 
 import urllib
 import json
@@ -121,12 +125,7 @@ def makeWebhookResult(data, req):
                  ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + \
                  dateDialogflow
     else:
-        getjson = forecast.get(5)
-        #dateDialogflow = formatDate(dateDialogflow)
-        #while (estimation < 10) and (dateDialogflow != forecast.get(str(estimation)).get('date')):
-        #    estimation =+1
-            
-        #if dateDialogflow == forecast.get(str(estimation)).get('date'):            
+        getjson = forecast[0]   
         speech =  getjson.get('date') + getjson.get('text') + getjson.get('high')
 
     print("Response:")
