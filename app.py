@@ -126,10 +126,10 @@ def makeWebhookResult(data, req):
                  dateDialogflow
     else:
         dateDialogflow = formatDate(dateDialogflow)
-        while (estimation < 10) and (dateDialogflow != forecast[estimation]['date']):
+        while (estimation < 10) and (dateDialogflow != forecast[1]['date']):
             estimation =+1         
-        if dateDialogflow == forecast[estimation]['date']:
-            speech =  forecast[estimation]['date'] + forecast[estimation]['text'] + forecast[estimation]['high']
+        if dateDialogflow == forecast[1]['date']:
+            speech =  forecast[1]['date'] + forecast[1]['text'] + forecast[1]['high']
 
     print("Response:")
     print(speech)
