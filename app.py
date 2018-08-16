@@ -141,8 +141,9 @@ def makeWebhookResult(data, req):
             speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
-        elif forecast[10]['date']:
+        if estimation == 10:
             speech = "I have not the weather forecast at the given date, please give me another date"
+            
     print("Response:")
     print(speech)
 
