@@ -138,7 +138,7 @@ def makeWebhookResult(data, req):
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
         else:
-            speech = "speech error :" + "%d" %estimation
+            speech = "speech error :" + "%d" %int(estimation)
                     
         
 
