@@ -132,7 +132,7 @@ def makeWebhookResult(data, req):
     else:
         dateDialogflow = formatDate(dateDialogflow)
         while (estimation < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
-            estimation = estimation + 1         
+            estimation += 1         
         if dateDialogflow == forecast[1]['date']:
             speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
@@ -141,6 +141,8 @@ def makeWebhookResult(data, req):
             speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
+        elif estimation >= 10:
+            speech = "I have not the weather forecast at the given date, please give me another date"
                     
         
 
