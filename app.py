@@ -125,7 +125,7 @@ def makeWebhookResult(data, req):
                  ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + \
                  dateDialogflow
     else:
-        getjson = forecast[0]   
+        getjson = forecast[5]   
         speech =  getjson.get('date') + getjson.get('text') + getjson.get('high')
 
     print("Response:")
