@@ -131,7 +131,7 @@ def makeWebhookResult(data, req):
         if dateDialogflow == forecast[1]['date']:
             speech = "Tomorrow the weather in " + location['city'] + \
                      " will be " + forecast[int(estimation)]['text'] + \
-                     " with " + forecast[int(estimation)]['high'] + \ 
+                     forecast[int(estimation)]['high'] + \ 
                      " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
                     
