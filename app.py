@@ -137,8 +137,10 @@ def makeWebhookResult(data, req):
             speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
-        else:
-            speech = "speech error :" + "%d" %int(estimation)
+        elif dateDialogflow == forecast[int(estimation)]['date']:
+            speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
+                     " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
+                     " degrees for the minimum"
                     
         
 
