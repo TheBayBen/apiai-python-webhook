@@ -216,22 +216,22 @@ def makeWebhookResult(data, req):
     parameters = result.get("parameters")
     dateDialogflow = parameters.get("date")
     dateDialogflow = formatDate(dateDialogflow)
-    while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']) and dateDialogflow:
+    while (estimation < 10) and (dateDialogflow != forecast[estimation]['date']) and dateDialogflow:
         estimation += 1  
     # print(json.dumps(item, indent=4))
     if estimation == 10:
         speech = "I have not any weather forecast available at the given date, please give me another date"
-    elif (not dateDialogflow) or (int(estimation) == 0):
+    elif (not dateDialogflow) or (estimation == 0):
         speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
                  ", the temperature is " + num2words(int(condition.get('temp'))) + " degree"    
     elif dateDialogflow == forecast[1]['date']:
-        speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-                 " with " + num2words(forecast[int(estimation)]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
-                 num2words(forecast[int(estimation)]['low']).replace('point zero', ' ') + " degrees for the minimum"
-    elif dateDialogflow == forecast[int(estimation)]['date']:
-        speech = "On the " + dateSpoken(forecast[int(estimation)]['date']) + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-                 " with " + num2words(forecast[int(estimation)]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
-                 num2words(forecast[int(estimation)]['low']).replace('point zero', ' ') + " degrees for the minimum"
+        speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[estimation]['text'] + \
+                 " with " + num2words(forecast[estimation]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
+                 num2words(forecast[estimation]['low']).replace('point zero', ' ') + " degrees for the minimum"
+    elif dateDialogflow == forecast[estimation]['date']:
+        speech = "On the " + dateSpoken(forecast[estimation]['date']) + " the weather in " + location['city'] + " will be " + forecast[estimation]['text'] + \
+                 " with " + num2words(forecast[estimation]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
+                 num2words(forecast[estimation]['low']).replace('point zero', ' ') + " degrees for the minimum"
     print("Response:")
     print(speech)
 
