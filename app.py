@@ -47,10 +47,14 @@ def dateSpoken(date):
         month = "of March"
     elif month == "Apr":
         month = "of April"
+    elif month == "May":
+        month = "of May"    
     elif month == "Jun":
         month = "of June"
     elif month == "Jul":
         month = "of July"
+    elif month == "Aug":
+        month = "of August"    
     elif month == "Sep":
         month = "of September"
     elif month == "Oct":
