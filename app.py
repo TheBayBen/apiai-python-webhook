@@ -39,87 +39,87 @@ def webhook():
 
 def dateSpoken(date):
     day,month,year = date.split(" ")
-    if month == "Jan"
+    if month == "Jan":
         month = "of January"
-    elif month == "Feb"
+    elif month == "Feb":
         month = "of February"
-    elif month == "Mar"
+    elif month == "Mar":
         month = "of March"
-    elif month == "Apr"
+    elif month == "Apr":
         month = "of April"
-    elif month == "Jun"
+    elif month == "Jun":
         month = "of June"
-    elif month == "Jul"
+    elif month == "Jul":
         month = "of July"
-    elif month == "Sep"
+    elif month == "Sep":
         month = "of September"
-    elif month == "Oct"
+    elif month == "Oct":
         month = "of October"
-    elif month == "Nov"
+    elif month == "Nov":
         month = "of November"
-    elif month == "Dec"
+    elif month == "Dec":
         month = "of December"
-    if day == "01"
+    if day == "01":
         day = "first"
-    elif day == "02"
+    elif day == "02":
         day = "second"
-    elif day == "03"
+    elif day == "03":
         day = "third"
-    elif day == "04"
+    elif day == "04":
         day = "fourth"    
-    elif day == "05"
+    elif day == "05":
         day = "fifth"
-    elif day == "06"
+    elif day == "06":
         day = "sixth" 
-    elif day == "07"
+    elif day == "07":
         day = "seventh"
-    elif day == "08"
+    elif day == "08":
         day = "eighth"
-    elif day == "09"
+    elif day == "09":
         day = "ninth"
-    elif day == "10"
+    elif day == "10":
         day = "tenth"
-    elif day == "11"
+    elif day == "11":
         day = "eleventh"
-    elif day == "12"
+    elif day == "12":
         day = "twelfth"
-    elif day == "13"
+    elif day == "13":
         day = "thirteenth"
-    elif day == "14"
+    elif day == "14":
         day = "fourteenth"
-    elif day == "15"
+    elif day == "15":
         day = "fifteenth"
-    elif day == "16"
+    elif day == "16":
         day = "sixteenth"
-    elif day == "17"
+    elif day == "17":
         day = "seventeenth"
-    elif day == "18"
+    elif day == "18":
         day = "eighteenth"
-    elif day == "19"
+    elif day == "19":
         day = "nineteenth"
-    elif day == "20"
+    elif day == "20":
         day = "twentieth"
-    elif day == "21"
+    elif day == "21":
         day = "twenty-first"
-    elif day == "22"
+    elif day == "22":
         day = "twenty-second"
-    elif day == "23"
+    elif day == "23":
         day = "twenty-third"
-    elif day == "24"
+    elif day == "24":
         day = "twenty-fourth"
-    elif day == "25"
+    elif day == "25":
         day = "twenty-fifth"
-    elif day == "26"
+    elif day == "26":
         day = "twenty-sixth"
-    elif day == "27"
+    elif day == "27":
         day = "twenty-seventh"
-    elif day == "28"
+    elif day == "28":
         day = "twenty-eighth"
-    elif day == "29"
+    elif day == "29":
         day = "twenty-ninth"
-    elif day == "30"
+    elif day == "30":
         day = "thirtieth" 
-    elif day == "31"
+    elif day == "31":
         day = "thirty-first" 
     return day + month
 
