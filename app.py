@@ -130,19 +130,17 @@ def makeWebhookResult(data, req):
     # print(json.dumps(item, indent=4))
     if forecast[int(estimation)]['date'] is None:
         speech = "I have not the weather forecast at the given date, please give me another date"
-    if (not dateDialogflow) or (int(estimation) == 0):
+    elif (not dateDialogflow) or (int(estimation) == 0):
         speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-                 ", the temperature is " + condition.get('temp') + " degrees"
-                 
-    else:       
-        if dateDialogflow == forecast[1]['date']:
-            speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-                     " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
-                     " degrees for the minimum"
-        elif dateDialogflow == forecast[int(estimation)]['date']:
-            speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-                     " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
-                     " degrees for the minimum"
+                 ", the temperature is " + condition.get('temp') + " degree"    
+    elif dateDialogflow == forecast[1]['date']:
+        speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
+                 " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
+                 " degrees for the minimum"
+    elif dateDialogflow == forecast[int(estimation)]['date']:
+        speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
+                 " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
+                 " degrees for the minimum"
     print("Response:")
     print(speech)
 
