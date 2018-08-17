@@ -16,6 +16,7 @@ import os
 from flask import Flask
 from flask import request
 from flask import make_response
+from num2words import num2words
 
 # Flask app should start in global layout
 app = Flask(__name__)
@@ -133,7 +134,7 @@ def makeWebhookResult(data, req):
         speech = "I have not the weather forecast at the given date, please give me another date"
     elif (not dateDialogflow) or (int(estimation) == 0):
         speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-                 ", the temperature is " + condition.get('temp') + " degree"    
+                 ", the temperature is " + num2words(int(condition.get('temp'))) + " degree"    
     elif dateDialogflow == forecast[1]['date']:
         speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                  " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
