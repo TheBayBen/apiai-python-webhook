@@ -64,67 +64,67 @@ def dateSpoken(date):
     elif month == "Dec":
         month = "of December"
     if day == "01":
-        day = "first"
+        day = "first "
     elif day == "02":
-        day = "second"
+        day = "second "
     elif day == "03":
-        day = "third"
+        day = "third "
     elif day == "04":
-        day = "fourth"    
+        day = "fourth "    
     elif day == "05":
-        day = "fifth"
+        day = "fifth "
     elif day == "06":
-        day = "sixth" 
+        day = "sixth " 
     elif day == "07":
-        day = "seventh"
+        day = "seventh "
     elif day == "08":
-        day = "eighth"
+        day = "eighth "
     elif day == "09":
-        day = "ninth"
+        day = "ninth "
     elif day == "10":
-        day = "tenth"
+        day = "tenth "
     elif day == "11":
-        day = "eleventh"
+        day = "eleventh "
     elif day == "12":
-        day = "twelfth"
+        day = "twelfth "
     elif day == "13":
-        day = "thirteenth"
+        day = "thirteenth "
     elif day == "14":
-        day = "fourteenth"
+        day = "fourteenth "
     elif day == "15":
-        day = "fifteenth"
+        day = "fifteenth "
     elif day == "16":
-        day = "sixteenth"
+        day = "sixteenth "
     elif day == "17":
-        day = "seventeenth"
+        day = "seventeenth "
     elif day == "18":
-        day = "eighteenth"
+        day = "eighteenth "
     elif day == "19":
-        day = "nineteenth"
+        day = "nineteenth "
     elif day == "20":
-        day = "twentieth"
+        day = "twentieth "
     elif day == "21":
-        day = "twenty-first"
+        day = "twenty-first "
     elif day == "22":
-        day = "twenty-second"
+        day = "twenty-second "
     elif day == "23":
-        day = "twenty-third"
+        day = "twenty-third "
     elif day == "24":
-        day = "twenty-fourth"
+        day = "twenty-fourth "
     elif day == "25":
-        day = "twenty-fifth"
+        day = "twenty-fifth "
     elif day == "26":
-        day = "twenty-sixth"
+        day = "twenty-sixth "
     elif day == "27":
-        day = "twenty-seventh"
+        day = "twenty-seventh "
     elif day == "28":
-        day = "twenty-eighth"
+        day = "twenty-eighth "
     elif day == "29":
-        day = "twenty-ninth"
+        day = "twenty-ninth "
     elif day == "30":
-        day = "thirtieth" 
+        day = "thirtieth " 
     elif day == "31":
-        day = "thirty-first" 
+        day = "thirty-first " 
     return day + month
 
 def formatDate(date):
