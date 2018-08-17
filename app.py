@@ -37,7 +37,8 @@ def webhook():
     return r
 
 def formatDate(date):
-    if
+    if not date:
+        return ;
     year,month,day = date.split("-")
     if month == "01":
         month = " Jan "
