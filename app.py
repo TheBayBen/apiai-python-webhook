@@ -138,11 +138,11 @@ def makeWebhookResult(data, req):
     elif dateDialogflow == forecast[1]['date']:
         speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                  " with " + num2words(forecast[int(estimation)]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
-                 num2words(forecast[int(estimation)]['low']) + " degrees for the minimum"
+                 num2words(forecast[int(estimation)]['low']).replace('point zero', ' ') + " degrees for the minimum"
     elif dateDialogflow == forecast[int(estimation)]['date']:
         speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-                 " with " + num2words(forecast[int(estimation)]['high']) + " degrees for the maximum and " + \
-                 num2words(forecast[int(estimation)]['low']) + " degrees for the minimum"
+                 " with " + num2words(forecast[int(estimation)]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
+                 num2words(forecast[int(estimation)]['low']).replace('point zero', ' ') + " degrees for the minimum"
     print("Response:")
     print(speech)
 
