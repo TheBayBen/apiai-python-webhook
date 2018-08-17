@@ -124,15 +124,15 @@ def makeWebhookResult(data, req):
     result = req.get("result")
     parameters = result.get("parameters")
     dateDialogflow = parameters.get("date")
+    dateDialogflow = formatDate(dateDialogflow)
+    while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
+        estimation += 1  
     # print(json.dumps(item, indent=4))
-    if not dateDialogflow:
+    if (not dateDialogflow) or (int(estimation) == 0):
         speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
                  ", the temperature is " + condition.get('temp') + " degrees" + \
                  dateDialogflow
-    else:
-        dateDialogflow = formatDate(dateDialogflow)
-        while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
-            estimation += 1         
+    else:       
         if dateDialogflow == forecast[1]['date']:
             speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
