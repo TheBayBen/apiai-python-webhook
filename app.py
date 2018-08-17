@@ -62,8 +62,6 @@ def formatDate(date):
         month = " Nov "
     elif month == "12":
         month = " Dec "
-    else:
-        month = " Invalid month "
     date = day + month + year
     return date
 
@@ -124,8 +122,8 @@ def makeWebhookResult(data, req):
     result = req.get("result")
     parameters = result.get("parameters")
     dateDialogflow = parameters.get("date")
-    dateDialogflowformatDate = formatDate(dateDialogflow)
-    while (int(estimation) < 10) and (dateDialogflowformatDate != forecast[int(estimation)]['date']):
+    dateDialogflow = formatDate(dateDialogflow)
+    while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
         estimation += 1  
     # print(json.dumps(item, indent=4))
     if int(estimation) == 10:
@@ -135,11 +133,11 @@ def makeWebhookResult(data, req):
                  ", the temperature is " + condition.get('temp') + " degrees"
                  
     else:       
-        if dateDialogflowformatDate == forecast[1]['date']:
+        if dateDialogflow == forecast[1]['date']:
             speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
-        elif dateDialogflowformatDate == forecast[int(estimation)]['date']:
+        elif dateDialogflow == forecast[int(estimation)]['date']:
             speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
                      " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
                      " degrees for the minimum"
