@@ -38,7 +38,7 @@ def webhook():
     return r
 
 def dateSpoken(date):
-    day,month,year = date.spit(" ")
+    day,month,year = date.split(" ")
     if month == "Jan"
         month = "of January"
     elif month == "Feb"
