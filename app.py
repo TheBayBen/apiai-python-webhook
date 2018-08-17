@@ -125,7 +125,7 @@ def makeWebhookResult(data, req):
     parameters = result.get("parameters")
     dateDialogflow = parameters.get("date")
     dateDialogflow = formatDate(dateDialogflow)
-    while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
+    while (int(estimation) <= 9) and (dateDialogflow != forecast[int(estimation)]['date']):
         int(estimation) += 1  
     # print(json.dumps(item, indent=4))
     if int(estimation) == 10:
