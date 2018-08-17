@@ -126,7 +126,7 @@ def makeWebhookResult(data, req):
     dateDialogflow = parameters.get("date")
     dateDialogflow = formatDate(dateDialogflow)
     while (int(estimation) < 10) and (dateDialogflow != forecast[int(estimation)]['date']):
-        estimation += 1  
+        int(estimation) += 1  
     # print(json.dumps(item, indent=4))
     if int(estimation) == 10:
         speech = "I have not the weather forecast at the given date, please give me another date"
