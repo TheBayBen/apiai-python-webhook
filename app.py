@@ -211,7 +211,7 @@ def makeWebhookResult(data, req):
     if estimation == 10:
         speech = "I have not any weather forecast available at the given date, please give me another date"
     elif (not dateDialogflow) or (estimation == 0):
-        speech = "Today in " + location.get('city') + "The weather is" + condition.get('text') + \
+        speech = "Today in " + location.get('city') + " the weather is " + condition.get('text') + \
                  ", the temperature is " + num2words(int(condition.get('temp'))) + " degrees"
         informationArray = [location.get('city'), forecast[estimation]['date'], condition.get('temp')]
     elif dateDialogflow == forecast[1]['date']:
