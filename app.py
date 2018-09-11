@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-#dateDialogflow = formatDate(dateDialogflow)
-#while (estimation < 10) and (dateDialogflow != forecast.get(str(estimation)).get('date'))
-#estimation =+1         
-#if dateDialogflow == forecast.get(str(estimation)).get('date'):         
-#" will be " + forecast[int(estimation)]['text'] + \
-#forecast[int(estimation)]['high'] + \ 
-#elif dateDialogflow == forecast[int(estimation)]['date']:
-#            speech = "On the " + forecast[int(estimation)]['date'] + " the weather in " + location['city'] + " will be " + forecast[int(estimation)]['text'] + \
-#                     " with " + forecast[int(estimation)]['high'] + " degrees for the maximum and " + forecast[int(estimation)]['low'] + \
-#                     " degrees for the minimum"
 import urllib
 import json
 import os
@@ -222,16 +211,19 @@ def makeWebhookResult(data, req):
     if estimation == 10:
         speech = "I have not any weather forecast available at the given date, please give me another date"
     elif (not dateDialogflow) or (estimation == 0):
-        speech = "Today in " + location.get('city') + " the weather will be " + condition.get('text') + \
-                 ", the temperature is " + num2words(int(condition.get('temp'))) + " degree"    
+        speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+                 ", the temperature is " + num2words(int(condition.get('temp'))) + " degree"
+        informationArray = [location.get('city'), dateDialogflow, condition.get('temp')]   
     elif dateDialogflow == forecast[1]['date']:
         speech = "Tomorrow the weather in " + location['city'] + " will be " + forecast[estimation]['text'] + \
                  " with " + num2words(forecast[estimation]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
                  num2words(forecast[estimation]['low']).replace('point zero', ' ') + " degrees for the minimum"
+        informationArray = [location.get('city'), dateDialogflow, forecast[estimation]['low'], forecast[estimation]['high']]        
     elif dateDialogflow == forecast[estimation]['date']:
         speech = "On the " + dateSpoken(forecast[estimation]['date']) + " the weather in " + location['city'] + " will be " + forecast[estimation]['text'] + \
                  " with " + num2words(forecast[estimation]['high']).replace('point zero', ' ') + " degrees for the maximum and " + \
                  num2words(forecast[estimation]['low']).replace('point zero', ' ') + " degrees for the minimum"
+        informationArray = [location.get('city'), dateDialogflow, forecast[estimation]['low'], forecast[estimation]['high']]
     print("Response:")
     print(speech)
 
@@ -298,7 +290,7 @@ def makeWebhookResult(data, req):
         "speech": speech,
         "displayText": speech,
         "data": {"slack": slack_message, "facebook": facebook_message},
-        # "contextOut": [],
+        "releventInformation": informationArray,
         "source": "apiai-weather-webhook-sample"
     }
 
@@ -309,3 +301,4 @@ if __name__ == '__main__':
     print "Starting app on port %d" % port
 
 app.run(debug=False, port=port, host='0.0.0.0')
+
