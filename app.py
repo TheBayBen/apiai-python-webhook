@@ -290,7 +290,7 @@ def makeWebhookResult(data, req):
         "speech": speech,
         "displayText": speech,
         "data": {"slack": slack_message, "facebook": facebook_message},
-        "source": informationArray
+        "source": forecast[estimation]['date']
     }
 
 
